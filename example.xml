@@ -1,0 +1,40 @@
+<mujoco>
+    <worldbody>
+        <light diffuse=".5 .5 .5" pos="0 0 200" dir="0 0 -1" />
+        <geom type="plane" size="50 5 0.1" rgba="0.8 0.8 0.8 1" />
+        <body name="car" pos="-45 0 1">
+            <joint type="free" axis="0 0 0" pos="0 0 0"/>
+            <geom name="car_geom" type="box" size="2.5 0.7 0.7" />
+
+            <body name="axle1" pos="-2 0 -0.5">
+                <joint type="hinge" axis="0 1 0" pos="0 0 0"/>
+                <geom type="cylinder" size="0.05 1" euler="90 0 0" rgba="0.6 0.6 0.6 1"/>
+    
+                <body name="wheel1" pos="0 -1.1 0">
+                    <joint type="hinge" axis="0 1 0" pos="0 0 0"/>
+                    <geom type="cylinder" size="0.5 0.1" euler="90 0 0" rgba="0.4 0.4 0.4 1" />
+                </body>
+    
+                <body name="wheel2" pos="0 1.1 0">
+                    <joint type="hinge" axis="0 1 0" pos="0 0 0"/>
+                    <geom type="cylinder" size="0.5 0.1" euler="90 0 0" rgba="0.4 0.4 0.4 1" />
+                </body>
+            </body>
+            
+            <body name="axle2" pos="2 0 -0.5">
+                <joint type="hinge" axis="0 1 0" pos="0 0 0"/>
+                <geom type="cylinder" size="0.05 1" euler="90 0 0" rgba="0.6 0.6 0.6 1"/>
+    
+                <body name="wheel3" pos="0 -1.1 0">
+                    <joint type="hinge" axis="0 1 0" pos="0 0 0"/>
+                    <geom type="cylinder" size="0.5 0.1" euler="90 0 0" rgba="0.4 0.4 0.4 1" />
+                </body>
+    
+                <body name="wheel4" pos="0 1.1 0">
+                    <joint type="hinge" axis="0 1 0" pos="0 0 0"/>
+                    <geom type="cylinder" size="0.5 0.1" euler="90 0 0" rgba="0.4 0.4 0.4 1" />
+                </body>
+            </body>
+        </body>
+    </worldbody>
+</mujoco>
