@@ -2,6 +2,21 @@
     <worldbody>
         <light diffuse=".5 .5 .5" pos="0 0 200" dir="0 0 -1" />
         <geom type="plane" size="50 5 0.1" rgba="0.8 0.8 0.8 1" />
+        <body name="bar1" pos="-40 0 0">
+            <geom type="cylinder" size="0.1 5" euler="90 0 0" rgba="0.2 0.2 0.2 1" />
+        </body>
+        <body name="bar2" pos="-20 0 0">
+            <geom type="cylinder" size="0.2 5" euler="90 0 0" rgba="0.2 0.2 0.2 1" />
+        </body>
+        <body name="bar3" pos="0 0 0">
+            <geom type="cylinder" size="0.3 5" euler="90 0 0" rgba="0.2 0.2 0.2 1" />
+        </body>
+        <body name="bar4" pos="20 0 0">
+            <geom type="cylinder" size="0.4 5" euler="90 0 0" rgba="0.2 0.2 0.2 1" />
+        </body>
+        <body name="bar5" pos="40 0 0">
+            <geom type="cylinder" size="0.5 5" euler="90 0 0" rgba="0.2 0.2 0.2 1" />
+        </body>
         <body name="car" pos="-45 0 1">
             <joint type="free" axis="0 0 0" pos="0 0 0"/>
             <geom name="car_geom" type="box" size="2.5 0.7 0.7" />
