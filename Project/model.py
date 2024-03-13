@@ -1,11 +1,5 @@
-from dm_control import mujoco
 from dm_control import mjcf
-import mujoco.viewer
-
-import random
 import numpy as np
-import time
-import cv2
 
 class Creature:
     def __init__(self, name, genotype):
@@ -24,16 +18,16 @@ class Creature:
         # Thigh:
         thigh = model.worldbody.add('body')
         hip = thigh.add('joint', axis=[0, 0, 1])
-        thigh.add('geom', fromto=[0, 0, 0, length, 0, 0], size=[length/4])
+        thigh.add('geom', name='c{:s}_thigh'.format(self.name.split('_')[1]), fromto=[0, 0, 0, length, 0, 0], size=[length/4])
 
         # Hip:
         shin = thigh.add('body', pos=[length, 0, 0])
         knee = shin.add('joint', axis=[0, 1, 0])
-        shin.add('geom', fromto=[0, 0, 0, 0, 0, -length], size=[length/5])
+        shin.add('geom', name='c{:s}_hip'.format(self.name.split('_')[1]), fromto=[0, 0, 0, 0, 0, -length], size=[length/5])
 
         # Position actuators:
-        model.actuator.add('position', joint=hip, kp=10)
-        model.actuator.add('position', joint=knee, kp=10)
+        # model.actuator.add('position', joint=hip, kp=10)
+        # model.actuator.add('position', joint=knee, kp=10)
         
         return model
 
@@ -48,16 +42,16 @@ class Creature:
         # Neck:
         neck = model.worldbody.add('body')
         vertebrae = neck.add('joint', axis=[0, 0, 1])
-        neck.add('geom', fromto=[0, 0, 0, length, 0, 0], size=[length/4])
+        neck.add('geom', name='c{:s}_neck'.format(self.name.split('_')[1]), fromto=[0, 0, 0, length, 0, 0], size=[length/4])
 
         # Head:
         head = model.worldbody.add('body', pos=[-length, 0, 0])
         atlas = head.add('joint', axis=[0, 0, 1])
-        head.add('geom', type='sphere', size=[length])
+        head.add('geom', name='c{:s}_head'.format(self.name.split('_')[1]), type='sphere', size=[length])
 
         # Position actuators:
-        model.actuator.add('position', joint=vertebrae, kp=10)
-        model.actuator.add('position', joint=atlas, kp=10)
+        # model.actuator.add('position', joint=vertebrae, kp=10)
+        # model.actuator.add('position', joint=atlas, kp=10)
         
         return model
 
@@ -84,12 +78,12 @@ class Creature:
         return model
 
 class Food:
-    def __init__(self, name, world_size, rgba):
+    def __init__(self, name, world_size, rgba, pos):
         self.name = name
         self.world_size = world_size
         self.rgba = rgba
-        self.pos = (random.uniform(self.world_size[0], self.world_size[1]), random.uniform(self.world_size[0], self.world_size[1]), 0.1)
-
+        self.pos = pos
+        
     def make_model(self):
         BODY_RADIUS = 0.1
         BODY_SIZE = (BODY_RADIUS/2, BODY_RADIUS/2, BODY_RADIUS/2)
