@@ -154,7 +154,7 @@ def iteration(arena, iterations, timestep, duration, food_range, frames, display
         print("{:d} New Creatures Reproduced".format(creature_count))
 
         model = mujoco.MjModel.from_xml_string(arena.to_xml_string())
-        mujoco.mj_printModel(model, './Project/model.txt')
+        # mujoco.mj_printModel(model, './Project/model.txt')
         geom_id = 0
         while True:
             try:
@@ -277,7 +277,7 @@ def iteration_random(arena, iterations, timestep, duration, food_range, frames, 
         print("{:d} New Creatures Reproduced".format(creature_count))
 
         model = mujoco.MjModel.from_xml_string(arena.to_xml_string())
-        mujoco.mj_printModel(model, './Project/model.txt')
+        # mujoco.mj_printModel(model, './Project/model.txt')
         geom_id = 0
         while True:
             try:
@@ -363,7 +363,7 @@ def iteration_random(arena, iterations, timestep, duration, food_range, frames, 
 
         # print(food_dict)
         # print(creature_dict)
-        
+
 arena = mjcf.RootElement()
 arena.worldbody.add('geom', type='plane', size=[2, 2, .1])
 arena.worldbody.add('light', pos=[0, 0, 3], dir=[0, 0, -1])
